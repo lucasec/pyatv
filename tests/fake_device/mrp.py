@@ -390,6 +390,7 @@ class FakeMrpService(MrpServerAuth, asyncio.Protocol):
             _LOGGER.debug("Pressed button: %s", self.state.last_button_pressed)
         elif inner.command == cmd.ChangeRepeatMode:
             state.repeat = {
+                protobuf.RepeatMode.Off: const.RepeatState.Off,
                 protobuf.RepeatMode.One: const.RepeatState.Track,
                 protobuf.RepeatMode.All: const.RepeatState.All,
             }.get(inner.options.repeatMode, const.RepeatState.Off)
